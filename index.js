@@ -1,8 +1,8 @@
 function injectScript() {
     const script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
-    script.setAttribute('src', chrome.runtime.getURL('app.js'));
-    document.body.appendChild(script);
+    script.src = chrome.runtime.getURL('app.js');
+    script.onload = script.remove
+    document.head.appendChild(script);
 }
 
 injectScript();
