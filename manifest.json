@@ -1,0 +1,18 @@
+{
+  "name": "YM-MS",
+  "description": "Yandex.Music MediaSession integration",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://music.yandex.ru/*"],
+      "js": ["index.js"]
+    }
+  ],
+  "web_accessible_resources" : [
+    {
+      "resources": ["app.js"],
+      "matches": ["https://music.yandex.ru/*"]
+    }
+  ]
+}
