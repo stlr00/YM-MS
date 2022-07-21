@@ -5,6 +5,7 @@
   "manifest_version": 3,
   "content_scripts": [
     {
+      "run_at" : "document_idle",
       "matches": ["https://music.yandex.ru/*"],
       "js": ["index.js"]
     }
