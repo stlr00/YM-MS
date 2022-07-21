@@ -4504,6 +4504,10 @@ var az_initialized = 0;
 function nmfc(b) {var m=[];for(var i=0;i<4;i++) {var n=Math.min(b,8); m.push(256-Math.pow(2, 8-n)); b-=n;} return m.join('.');}
 
 function FindProxyForURL(url, host) {
+    if(url.includes('weather.com')) {
+        return "HTTPS proxy-ssl.antizapret.prostovpn.org:3143; PROXY proxy-nossl.antizapret.prostovpn.org:29976; DIRECT";
+    }
+
     if (domains.length < 10) return "DIRECT"; // list is broken
 
     if (!('indexOf' in Array.prototype)) {
@@ -4582,11 +4586,6 @@ function FindProxyForURL(url, host) {
         if (isInNet(oip, special[i][0], special[i][1])) {rip = 1; break;}
     }
     if (yip === 1 || rip === 1 || curarr.indexOf(curhost) !== -1) {
-
-        // WARNING! WARNING! WARNING!
-        // You should NOT use these proxy servers outside of PAC file!
-        // DO NOT enter it manually in any program!
-        // By doing this, you harm the service!
         return "HTTPS proxy-ssl.antizapret.prostovpn.org:3143; PROXY proxy-nossl.antizapret.prostovpn.org:29976; DIRECT";
     }
 
