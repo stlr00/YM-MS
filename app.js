@@ -18,18 +18,20 @@ function setMetaData() {
             title: track.title,
             album: track.album.title,
             artist: artist,
-            artwork: [
-                {src: 'https://' + track.cover.replace('%%', '30x30'), sizes: '30x30', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '50x50'), sizes: '50x50', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '80x80'), sizes: '80x80', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '100x100'), sizes: '100x100', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '200x200'), sizes: '200x200', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '300x300'), sizes: '300x300', type: 'image/png'},
-                {src: 'https://' + track.cover.replace('%%', '400x400'), sizes: '400x400', type: 'image/png'},
-            ],
+            artwork: makeAlbumSize(track.cover),
         })
     } catch (e) {
         setTimeout(setMetaData, 300)
     }
 
+}
+
+function makeAlbumSize(cover) {
+    const sizes = [30, 50, 80, 100, 200, 300, 400]
+
+    return sizes.map(size => ({
+        src: 'https://' + cover.replace('%%', `${size}x${size}`),
+        sizes: `${size}x${size}`,
+        type: 'image/png'
+    }))
 }
